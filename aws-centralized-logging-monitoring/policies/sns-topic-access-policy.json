@@ -1,0 +1,33 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowCloudWatchAlarmsToPublish",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "cloudwatch.amazonaws.com"
+      },
+      "Action": "sns:Publish",
+      "Resource": "arn:aws:sns:YOUR_REGION:YOUR_ACCOUNT_ID:account-security-alerts",
+      "Condition": {
+        "StringEquals": {
+          "AWS:SourceAccount": "YOUR_ACCOUNT_ID"
+        }
+      }
+    },
+    {
+      "Sid": "AllowEventBridgeToPublish",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "events.amazonaws.com"
+      },
+      "Action": "sns:Publish",
+      "Resource": "arn:aws:sns:YOUR_REGION:YOUR_ACCOUNT_ID:account-security-alerts",
+      "Condition": {
+        "StringEquals": {
+          "AWS:SourceAccount": "YOUR_ACCOUNT_ID"
+        }
+      }
+    }
+  ]
+}
